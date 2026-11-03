@@ -1,0 +1,15 @@
+{
+  "light": {
+    "background": "#FAF4ED",
+    "text": "#575279",
+    "boldText": "#575279",
+    "cursor": "#575279",
+    "selection": "#DFDAD9",
+    "ansi": {
+      "black": "#575279", "red": "#B4637A", "green": "#286983", "yellow": "#9A6215",
+      "blue": "#29646E", "magenta": "#907AA9", "cyan": "#3B1F1D", "white": "#F2E9E1",
+      "brightBlack": "#9893A5", "brightRed": "#B4637A", "brightGreen": "#286983", "brightYellow": "#9A6215",
+      "brightBlue": "#29646E", "brightMagenta": "#907AA9", "brightCyan": "#A0544F", "brightWhite": "#FFFAF3"
+    }
+  }
+}

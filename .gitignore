@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Compiled watcher (built by install.sh)
+appearance-watcher
+
+# Generated profile files (written by apply-theme.sh on every run)
+*.terminal
