@@ -1,0 +1,21 @@
+# Terminal.app's stock Basic profile in dark mode: black background, white text, Terminal's ANSI colors.
+background = #000000
+foreground = #FEFFFF
+cursor-color = #6C6C6C
+selection-background = #6F869E
+palette = 0=#000000
+palette = 1=#c65339
+palette = 2=#6ac44b
+palette = 3=#b8b74a
+palette = 4=#6444ed
+palette = 5=#d357db
+palette = 6=#69c1cf
+palette = 7=#d1d1d1
+palette = 8=#909090
+palette = 9=#eb5a3a
+palette = 10=#77ea51
+palette = 11=#efef53
+palette = 12=#d09af9
+palette = 13=#eb5af7
+palette = 14=#78f1f2
+palette = 15=#ededed

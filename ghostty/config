@@ -1,0 +1,7 @@
+# Ghostty config. Reference: https://ghostty.org/docs/config
+# Colors follow macOS light/dark mode automatically.
+theme = light:Rose Pine Dawn Custom,dark:Basic Dark
+
+font-size = 14
+# Same as "Use Option as Meta key" in Terminal.app
+macos-option-as-alt = true

@@ -1,8 +1,34 @@
 # Terminal customisation
 
-Light and dark color themes for macOS Terminal.app. The theme switches automatically with the macOS appearance, and the colors are tuned to work with Claude Code.
+Light and dark color themes for macOS terminals. The colors switch automatically with the macOS appearance.
 
-## How it works
+- **Ghostty** (recommended): see [Ghostty](#ghostty).
+- **Terminal.app**: the rest of this README. Terminal.app has no truecolor support, so it needs more workarounds.
+
+## Ghostty
+
+Ghostty switches themes with the macOS appearance by itself, and it supports truecolor. Claude Code's **Auto (match terminal)** theme therefore shows correct colors in both modes, and open sessions follow the change.
+
+| File | Purpose |
+|---|---|
+| `ghostty/config` | Main config. Sets the light and dark theme, the font size, and Option as Alt |
+| `ghostty/themes/Rose Pine Dawn Custom` | Light theme. Same colors as `themes/rose-pine-dawn-custom.json` |
+| `ghostty/themes/Basic Dark` | Dark theme. The colors of Terminal.app's stock Basic profile in dark mode |
+
+Setup:
+
+```bash
+brew install --cask ghostty
+ln -s "$PWD/ghostty" ~/.config/ghostty
+```
+
+In Claude Code, run `/theme` and select **Auto (match terminal)**.
+
+After you edit the config, press Cmd+Shift+, in Ghostty to reload it. To check the config, run `/Applications/Ghostty.app/Contents/MacOS/ghostty +validate-config`.
+
+## Terminal.app
+
+### How it works
 
 - Terminal has two profiles:
   - **Basic**: dark mode.
@@ -10,7 +36,7 @@ Light and dark color themes for macOS Terminal.app. The theme switches automatic
 - `appearance-watcher` is a small background program that macOS starts at login. When the macOS appearance changes, it moves every tab using one of the two profiles to the other profile. It also sets the profile Terminal uses for new windows.
 - `apply-theme.sh` writes the colors from a theme JSON into one of the profiles.
 
-## Files
+### Files
 
 | File | Purpose |
 |---|---|
@@ -22,7 +48,7 @@ Light and dark color themes for macOS Terminal.app. The theme switches automatic
 | `themes/` | Theme JSON files |
 | `theme-sample.md` | Fixed markdown sample used to check colors in Claude Code |
 
-## Setup
+### Setup
 
 ```bash
 ./install.sh
@@ -39,7 +65,7 @@ rm ~/Library/LaunchAgents/com.user.terminal-appearance-watcher.plist
 
 If you move this folder, run `./install.sh` again. The LaunchAgent stores the full path to the binary.
 
-## Applying a theme
+### Applying a theme
 
 ```bash
 ./apply-theme.sh themes/rose-pine-dawn-custom.json light   # updates "Basic Light"
@@ -53,7 +79,7 @@ Notes:
 - Terminal imports a profile by opening its `.terminal` file, and the import always opens a new window. The script closes that window. It also deletes the old profile, renames the imported one, and moves your tabs to it.
 - Non-color settings (font, spacing, options) are copied from the **Basic** profile.
 
-## Theme JSON format
+### Theme JSON format
 
 ```json
 {
@@ -77,7 +103,7 @@ The top-level key (`light` or `dark`) must match the mode you pass to `apply-the
 
 Keep **black** dark and **white** light, also in a light theme. Some themes (Rosé Pine Dawn, for example) swap them for light mode. Programs that print in "black" then become invisible, and that includes Claude Code's main text.
 
-## Themes
+### Themes
 
 | File | Notes |
 |---|---|
@@ -87,15 +113,15 @@ Keep **black** dark and **white** light, also in a light theme. Some themes (Ros
 
 There is no dark theme JSON yet. The **Basic** profile keeps its own colors.
 
-## Claude Code
+### Claude Code
 
-### Use an ANSI theme
+#### Use an ANSI theme
 
 Terminal.app has no truecolor support. Claude Code's normal themes, including **Auto (match terminal)**, use fixed RGB colors. Terminal rounds them to its fixed 256-color palette, and the theme JSON cannot change those colors.
 
 In Claude Code, run `/theme` and select **Light mode (ANSI colors only)**. Claude Code then uses only the 16 ANSI colors, which come from the Terminal profile. Claude Code stays on this theme when macOS switches to dark mode, but the colors come from the **Basic** profile, so they still change.
 
-### Which ANSI color is used where (light-ansi)
+#### Which ANSI color is used where (light-ansi)
 
 | Element | ANSI color |
 |---|---|
@@ -112,7 +138,7 @@ In Claude Code, run `/theme` and select **Light mode (ANSI colors only)**. Claud
 
 This table comes from the Claude Code 2.1.317 code, plus testing. It can change in later versions.
 
-### Adjusting colors
+#### Adjusting colors
 
 1. Ask Claude Code to show the sample:
    ```
